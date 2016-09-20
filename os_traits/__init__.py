@@ -18,16 +18,16 @@ import pbr.version
 import six
 
 __version__ = pbr.version.VersionInfo(
-    'os_capabilities').version_string()
+    'os_traits').version_string()
 
 # Conveniently import all the constants into the main module "namespace"
-from os_capabilities.const import *
+from os_traits.const import *
 
 
 def get_symbol_names(prefix=None):
     """
-    Returns the names of symbols of capability strings in the
-    os_capabilities module, optionally filtered by a supplied prefix.
+    Returns the names of symbols of trait strings in the os_traits module,
+    optionally filtered by a supplied prefix.
 
     :param prefix: Optional string prefix to filter by. e.g. 'hw:'
     """
@@ -44,9 +44,9 @@ def get_symbol_names(prefix=None):
     ]
 
 
-def get_capabilities(prefix=None):
+def get_traits(prefix=None):
     """
-    Returns the capability strings in the os_capabilities module, optionally
+    Returns the trait strings in the os_traits module, optionally
     filtered by a supplied prefix.
 
     :param prefix: Optional string prefix to filter by. e.g. 'hw:'

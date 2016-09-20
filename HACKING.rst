@@ -1,4 +1,4 @@
-os-capabilities Style Commandments
+os-traits Style Commandments
 ===============================================
 
 Read the OpenStack Style Commandments http://docs.openstack.org/developer/hacking/
