@@ -13,16 +13,16 @@
 # under the License.
 
 """
-test_os_capabilities
+test_os_traits
 ----------------------------------
 
-Tests for `os_capabilities` module.
+Tests for `os_traits` module.
 """
 
-from os_capabilities.tests import base
+from os_traits.tests import base
 
 
-class TestOs_capabilities(base.TestCase):
+class TestOs_traits(base.TestCase):
 
     def test_something(self):
         pass

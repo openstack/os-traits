@@ -1,5 +1,5 @@
 ============================================
- os_capabilities Release Notes
+ os_traits Release Notes
 ============================================
 
 .. toctree::

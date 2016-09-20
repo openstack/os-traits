@@ -2,6 +2,6 @@
 Usage
 ========
 
-To use os-capabilities in a project::
+To use os-traits in a project::
 
-    import os_capabilities
+    import os_traits
