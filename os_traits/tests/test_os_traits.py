@@ -19,10 +19,27 @@ test_os_traits
 Tests for `os_traits` module.
 """
 
+import os_traits as ot
 from os_traits.tests import base
 
 
 class TestOs_traits(base.TestCase):
 
-    def test_something(self):
-        pass
+    def test_trait(self):
+        trait = ot.HW_CPU_X86_SSE42
+        self.assertEqual("hw:cpu:x86:sse42", trait)
+
+    def test_get_symbol_names(self):
+        names = ot.get_symbol_names()
+        self.assertIn("HW_CPU_X86_AVX2", names)
+        self.assertEqual(35, len(names))
+
+    def test_namespaces(self):
+        namespaces = ot.NAMESPACES
+        self.assertIn(("hardware", "hw:"), namespaces.items())
+        self.assertEqual(4, len(namespaces))
+
+    def test_get_traits(self):
+        traits = ot.get_traits(ot.NAMESPACES['x86'])
+        self.assertIn("hw:cpu:x86:sse42", traits)
+        self.assertEqual(35, len(traits))
