@@ -43,3 +43,13 @@ class TestOs_traits(base.TestCase):
         traits = ot.get_traits(ot.NAMESPACES['x86'])
         self.assertIn("hw:cpu:x86:sse42", traits)
         self.assertEqual(35, len(traits))
+
+    def test_check_traits(self):
+        traits = set(["hw:cpu:x86:sse42", "hw:cpu:x86:xop"])
+        not_traits = set(["not_trait1", "not_trait2"])
+
+        check_traits = []
+        check_traits.extend(traits)
+        check_traits.extend(not_traits)
+        self.assertEqual((traits, not_traits),
+                         ot.check_traits(check_traits))
