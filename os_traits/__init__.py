@@ -62,3 +62,18 @@ def get_traits(prefix=None):
         v not in excluded_values and
         (prefix is None or v.startswith(prefix))
     ]
+
+
+def check_traits(traits):
+    """
+    Returns a tuple of two trait string sets, the first set contains valid
+    traits, and the second contains others.
+
+    :param traits: An iterable contains trait strings.
+    """
+    trait_set = set(traits)
+    valid_trait_set = set(get_traits())
+
+    valid_traits = trait_set & valid_trait_set
+
+    return (valid_traits, trait_set - valid_traits)
