@@ -28,7 +28,7 @@ def get_symbol_names(prefix=None):
     """Returns the names of symbols of trait strings in the os_traits module,
     optionally filtered by a supplied prefix.
 
-    :param prefix: Optional string prefix to filter by. e.g. 'hw:'
+    :param prefix: Optional string prefix to filter by. e.g. 'HW_'
     """
     excluded_keys = ('NAMESPACES',)
     excluded_values = NAMESPACES.values()
@@ -47,7 +47,7 @@ def get_traits(prefix=None):
     """Returns the trait strings in the os_traits module, optionally filtered
     by a supplied prefix.
 
-    :param prefix: Optional string prefix to filter by. e.g. 'hw:'
+    :param prefix: Optional string prefix to filter by. e.g. 'HW_'
     """
     excluded_keys = ('NAMESPACES',)
     excluded_values = NAMESPACES.values()

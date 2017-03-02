@@ -13,63 +13,63 @@
 # under the License.
 
 # All hardware-specific features are prefixed with this namespace
-_HW_NS = 'hw:'
+_HW_NS = 'HW_'
 
 # All CPU-specific features are prefixed with this namespace
-_CPU_NS = _HW_NS + 'cpu:'
+_CPU_NS = _HW_NS + 'CPU_'
 
-_CPU_X86_NS = _CPU_NS + 'x86:'
+_CPU_X86_NS = _CPU_NS + 'X86_'
 
 # ref: https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions
-HW_CPU_X86_AVX = _CPU_X86_NS + 'avx'
-HW_CPU_X86_AVX2 = _CPU_X86_NS + 'avx2'
-HW_CPU_X86_CLMUL = _CPU_X86_NS + 'clmul'
-HW_CPU_X86_FMA3 = _CPU_X86_NS + 'fma3'
-HW_CPU_X86_FMA4 = _CPU_X86_NS + 'fma4'
-HW_CPU_X86_F16C = _CPU_X86_NS + 'f16c'
-HW_CPU_X86_MMX = _CPU_X86_NS + 'mmx'
-HW_CPU_X86_SSE = _CPU_X86_NS + 'sse'
-HW_CPU_X86_SSE2 = _CPU_X86_NS + 'sse2'
-HW_CPU_X86_SSE3 = _CPU_X86_NS + 'sse3'
-HW_CPU_X86_SSSE3 = _CPU_X86_NS + 'ssse3'
-HW_CPU_X86_SSE41 = _CPU_X86_NS + 'sse41'
-HW_CPU_X86_SSE42 = _CPU_X86_NS + 'sse42'
-HW_CPU_X86_SSE4A = _CPU_X86_NS + 'sse4a'
-HW_CPU_X86_XOP = _CPU_X86_NS + 'xop'
-HW_CPU_X86_3DNOW = _CPU_X86_NS + '3dnow'
+HW_CPU_X86_AVX = _CPU_X86_NS + 'AVX'
+HW_CPU_X86_AVX2 = _CPU_X86_NS + 'AVX2'
+HW_CPU_X86_CLMUL = _CPU_X86_NS + 'CLMUL'
+HW_CPU_X86_FMA3 = _CPU_X86_NS + 'FMA3'
+HW_CPU_X86_FMA4 = _CPU_X86_NS + 'FMA4'
+HW_CPU_X86_F16C = _CPU_X86_NS + 'F16C'
+HW_CPU_X86_MMX = _CPU_X86_NS + 'MMX'
+HW_CPU_X86_SSE = _CPU_X86_NS + 'SSE'
+HW_CPU_X86_SSE2 = _CPU_X86_NS + 'SSE2'
+HW_CPU_X86_SSE3 = _CPU_X86_NS + 'SSE3'
+HW_CPU_X86_SSSE3 = _CPU_X86_NS + 'SSSE3'
+HW_CPU_X86_SSE41 = _CPU_X86_NS + 'SSE41'
+HW_CPU_X86_SSE42 = _CPU_X86_NS + 'SSE42'
+HW_CPU_X86_SSE4A = _CPU_X86_NS + 'SSE4A'
+HW_CPU_X86_XOP = _CPU_X86_NS + 'XOP'
+HW_CPU_X86_3DNOW = _CPU_X86_NS + '3DNOW'
 # ref: https://en.wikipedia.org/wiki/AVX-512
-HW_CPU_X86_AVX512F = _CPU_X86_NS + 'avx512f'  # foundation
-HW_CPU_X86_AVX512CD = _CPU_X86_NS + 'avx512cd'  # conflict detection
-HW_CPU_X86_AVX512PF = _CPU_X86_NS + 'avx512pf'  # prefetch
-HW_CPU_X86_AVX512ER = _CPU_X86_NS + 'avx512er'  # exponential + reciprocal
-HW_CPU_X86_AVX512VL = _CPU_X86_NS + 'avx512vl'  # vector length extensions
-HW_CPU_X86_AVX512BW = _CPU_X86_NS + 'avx512bw'  # byte + word
-HW_CPU_X86_AVX512DQ = _CPU_X86_NS + 'avx512dq'  # double word + quad word
+HW_CPU_X86_AVX512F = _CPU_X86_NS + 'AVX512F'  # foundation
+HW_CPU_X86_AVX512CD = _CPU_X86_NS + 'AVX512CD'  # conflict detection
+HW_CPU_X86_AVX512PF = _CPU_X86_NS + 'AVX512PF'  # prefetch
+HW_CPU_X86_AVX512ER = _CPU_X86_NS + 'AVX512ER'  # exponential + reciprocal
+HW_CPU_X86_AVX512VL = _CPU_X86_NS + 'AVX512VL'  # vector length extensions
+HW_CPU_X86_AVX512BW = _CPU_X86_NS + 'AVX512BW'  # byte + word
+HW_CPU_X86_AVX512DQ = _CPU_X86_NS + 'AVX512DQ'  # double word + quad word
 # ref: https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
-HW_CPU_X86_ABM = _CPU_X86_NS + 'abm'
-HW_CPU_X86_BMI = _CPU_X86_NS + 'bmi'
-HW_CPU_X86_BMI2 = _CPU_X86_NS + 'bmi2'
-HW_CPU_X86_TBM = _CPU_X86_NS + 'tbm'
+HW_CPU_X86_ABM = _CPU_X86_NS + 'ABM'
+HW_CPU_X86_BMI = _CPU_X86_NS + 'BMI'
+HW_CPU_X86_BMI2 = _CPU_X86_NS + 'BMI2'
+HW_CPU_X86_TBM = _CPU_X86_NS + 'TBM'
 # ref: https://en.wikipedia.org/wiki/AES_instruction_set
-HW_CPU_X86_AESNI = _CPU_X86_NS + 'aes-ni'
+HW_CPU_X86_AESNI = _CPU_X86_NS + 'AES-NI'
 # ref: https://en.wikipedia.org/wiki/Intel_SHA_extensions
-HW_CPU_X86_SHA = _CPU_X86_NS + 'sha'
+HW_CPU_X86_SHA = _CPU_X86_NS + 'SHA'
 # ref: https://en.wikipedia.org/wiki/Intel_MPX
-HW_CPU_X86_MPX = _CPU_X86_NS + 'mpx'
+HW_CPU_X86_MPX = _CPU_X86_NS + 'MPX'
 # ref: https://en.wikipedia.org/wiki/Software_Guard_Extensions
-HW_CPU_X86_SGX = _CPU_X86_NS + 'sgx'
+HW_CPU_X86_SGX = _CPU_X86_NS + 'SGX'
 # ref: https://en.wikipedia.org/wiki/Transactional_Synchronization_Extensions
-HW_CPU_X86_TSX = _CPU_X86_NS + 'tsx'
+HW_CPU_X86_TSX = _CPU_X86_NS + 'TSX'
 # ref: https://en.wikipedia.org/wiki/Advanced_Synchronization_Facility
-HW_CPU_X86_ASF = _CPU_X86_NS + 'asf'
+HW_CPU_X86_ASF = _CPU_X86_NS + 'ASF'
 # ref: https://en.wikipedia.org/wiki/VT-x
-HW_CPU_X86_VMX = _CPU_X86_NS + 'vmx'
+HW_CPU_X86_VMX = _CPU_X86_NS + 'VMX'
 # ref: https://en.wikipedia.org/wiki/AMD-V
-HW_CPU_X86_SVM = _CPU_X86_NS + 'svm'
+HW_CPU_X86_SVM = _CPU_X86_NS + 'SVM'
 
 NAMESPACES = {
-    'hardware': _HW_NS,
-    'hw': _HW_NS,
-    'cpu': _CPU_NS,
-    'x86': _CPU_X86_NS,
+    'HARDWARE': _HW_NS,
+    'HW': _HW_NS,
+    'CPU': _CPU_NS,
+    'X86': _CPU_X86_NS,
 }

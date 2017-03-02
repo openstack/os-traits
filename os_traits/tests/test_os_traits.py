@@ -27,7 +27,7 @@ class TestOs_traits(base.TestCase):
 
     def test_trait(self):
         trait = ot.HW_CPU_X86_SSE42
-        self.assertEqual("hw:cpu:x86:sse42", trait)
+        self.assertEqual("HW_CPU_X86_SSE42", trait)
 
     def test_get_symbol_names(self):
         names = ot.get_symbol_names()
@@ -36,16 +36,16 @@ class TestOs_traits(base.TestCase):
 
     def test_namespaces(self):
         namespaces = ot.NAMESPACES
-        self.assertIn(("hardware", "hw:"), namespaces.items())
+        self.assertIn(("HARDWARE", "HW_"), namespaces.items())
         self.assertEqual(4, len(namespaces))
 
     def test_get_traits(self):
-        traits = ot.get_traits(ot.NAMESPACES['x86'])
-        self.assertIn("hw:cpu:x86:sse42", traits)
+        traits = ot.get_traits(ot.NAMESPACES['X86'])
+        self.assertIn("HW_CPU_X86_SSE42", traits)
         self.assertEqual(35, len(traits))
 
     def test_check_traits(self):
-        traits = set(["hw:cpu:x86:sse42", "hw:cpu:x86:xop"])
+        traits = set(["HW_CPU_X86_SSE42", "HW_CPU_X86_XOP"])
         not_traits = set(["not_trait1", "not_trait2"])
 
         check_traits = []
