@@ -21,12 +21,11 @@ __version__ = pbr.version.VersionInfo(
     'os_traits').version_string()
 
 # Conveniently import all the constants into the main module "namespace"
-from os_traits.const import *
+from os_traits.const import *  # noqa
 
 
 def get_symbol_names(prefix=None):
-    """
-    Returns the names of symbols of trait strings in the os_traits module,
+    """Returns the names of symbols of trait strings in the os_traits module,
     optionally filtered by a supplied prefix.
 
     :param prefix: Optional string prefix to filter by. e.g. 'hw:'
@@ -45,9 +44,8 @@ def get_symbol_names(prefix=None):
 
 
 def get_traits(prefix=None):
-    """
-    Returns the trait strings in the os_traits module, optionally
-    filtered by a supplied prefix.
+    """Returns the trait strings in the os_traits module, optionally filtered
+    by a supplied prefix.
 
     :param prefix: Optional string prefix to filter by. e.g. 'hw:'
     """
@@ -65,8 +63,7 @@ def get_traits(prefix=None):
 
 
 def check_traits(traits):
-    """
-    Returns a tuple of two trait string sets, the first set contains valid
+    """Returns a tuple of two trait string sets, the first set contains valid
     traits, and the second contains others.
 
     :param traits: An iterable contains trait strings.
