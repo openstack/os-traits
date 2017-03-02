@@ -12,6 +12,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+# Any user-specified feature/trait is prefixed with the custom namespace
+_CUSTOM_NS = 'CUSTOM_'
+
 # All hardware-specific features are prefixed with this namespace
 _HW_NS = 'HW_'
 
@@ -68,6 +71,7 @@ HW_CPU_X86_VMX = _CPU_X86_NS + 'VMX'
 HW_CPU_X86_SVM = _CPU_X86_NS + 'SVM'
 
 NAMESPACES = {
+    'CUSTOM': _CUSTOM_NS,
     'HARDWARE': _HW_NS,
     'HW': _HW_NS,
     'CPU': _CPU_NS,

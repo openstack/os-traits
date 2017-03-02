@@ -74,3 +74,12 @@ def check_traits(traits):
     valid_traits = trait_set & valid_trait_set
 
     return (valid_traits, trait_set - valid_traits)
+
+
+def is_custom(trait):
+    """Returns True if the trait string represents a custom trait, or False
+    otherwise.
+
+    :param trait: String name of the trait
+    """
+    return trait.startswith(NAMESPACES['CUSTOM'])

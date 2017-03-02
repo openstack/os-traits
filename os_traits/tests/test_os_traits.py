@@ -37,7 +37,7 @@ class TestOs_traits(base.TestCase):
     def test_namespaces(self):
         namespaces = ot.NAMESPACES
         self.assertIn(("HARDWARE", "HW_"), namespaces.items())
-        self.assertEqual(4, len(namespaces))
+        self.assertEqual(5, len(namespaces))
 
     def test_get_traits(self):
         traits = ot.get_traits(ot.NAMESPACES['X86'])
@@ -53,3 +53,7 @@ class TestOs_traits(base.TestCase):
         check_traits.extend(not_traits)
         self.assertEqual((traits, not_traits),
                          ot.check_traits(check_traits))
+
+    def test_is_custom(self):
+        self.assertTrue(ot.is_custom('CUSTOM_FOO'))
+        self.assertFalse(ot.is_custom('HW_CPU_X86_SSE42'))
