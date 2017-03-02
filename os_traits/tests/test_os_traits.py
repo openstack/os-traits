@@ -32,12 +32,12 @@ class TestOs_traits(base.TestCase):
     def test_get_symbol_names(self):
         names = ot.get_symbol_names()
         self.assertIn("HW_CPU_X86_AVX2", names)
-        self.assertEqual(35, len(names))
+        self.assertIn("STORAGE_DISK_SSD", names)
 
     def test_namespaces(self):
         namespaces = ot.NAMESPACES
         self.assertIn(("HARDWARE", "HW_"), namespaces.items())
-        self.assertEqual(5, len(namespaces))
+        self.assertEqual(7, len(namespaces))
 
     def test_get_traits(self):
         traits = ot.get_traits(ot.NAMESPACES['X86'])

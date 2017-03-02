@@ -70,10 +70,22 @@ HW_CPU_X86_VMX = _CPU_X86_NS + 'VMX'
 # ref: https://en.wikipedia.org/wiki/AMD-V
 HW_CPU_X86_SVM = _CPU_X86_NS + 'SVM'
 
+# All storage-specific features are prefixed with this namespace
+_STORAGE_NS = 'STORAGE_'
+
+# All disk storage-specific features are prefixed with this namespace (as
+# opposed to object storage)
+_DISK_NS = _STORAGE_NS + 'DISK_'
+
+STORAGE_DISK_HDD = _DISK_NS + 'HDD'  # spinning oxide
+STORAGE_DISK_SSD = _DISK_NS + 'SSD'  # solid-state disks
+
 NAMESPACES = {
     'CUSTOM': _CUSTOM_NS,
     'HARDWARE': _HW_NS,
     'HW': _HW_NS,
     'CPU': _CPU_NS,
     'X86': _CPU_X86_NS,
+    'STORAGE': _STORAGE_NS,
+    'DISK': _DISK_NS,
 }
