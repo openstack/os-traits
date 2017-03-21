@@ -14,6 +14,7 @@
 
 import os_traits as ot
 from os_traits.hw.cpu import x86
+from os_traits.hw.nic import offload
 from os_traits.tests import base
 
 
@@ -28,17 +29,20 @@ class TestSymbols(base.TestCase):
 
         # And the "leaf-module" namespace...
         self.assertEqual(x86.SSE42, ot.HW_CPU_X86_SSE42)
+        self.assertEqual(offload.TSO, ot.HW_NIC_OFFLOAD_TSO)
 
     def test_get_symbol_names(self):
         names = ot.get_symbol_names()
         self.assertIn("HW_CPU_X86_AVX2", names)
         self.assertIn("STORAGE_DISK_SSD", names)
+        self.assertIn("HW_NIC_SRIOV", names)
 
     def test_get_traits(self):
         traits = ot.get_traits('HW_CPU')
         self.assertIn("HW_CPU_X86_SSE42", traits)
         self.assertIn(ot.HW_CPU_X86_AVX2, traits)
         self.assertNotIn(ot.STORAGE_DISK_SSD, traits)
+        self.assertNotIn(ot.HW_NIC_SRIOV, traits)
 
     def test_check_traits(self):
         traits = set(["HW_CPU_X86_SSE42", "HW_CPU_X86_XOP"])

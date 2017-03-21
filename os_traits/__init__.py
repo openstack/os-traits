@@ -25,6 +25,11 @@ CUSTOM_NAMESPACE = 'CUSTOM_'
 
 # Each submodule registers its symbols with the os_traits module namespace
 from os_traits.hw.cpu import x86  # noqa
+from os_traits.hw import nic  # noqa
+from os_traits.hw.nic import accel  # noqa
+from os_traits.hw.nic import dcb  # noqa
+from os_traits.hw.nic import offload  # noqa
+from os_traits.hw.nic import sriov  # noqa
 from os_traits.storage import disk  # noqa
 
 
