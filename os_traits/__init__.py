@@ -20,8 +20,12 @@ import six
 __version__ = pbr.version.VersionInfo(
     'os_traits').version_string()
 
-# Conveniently import all the constants into the main module "namespace"
-from os_traits.const import *  # noqa
+# Any user-specified feature/trait is prefixed with the custom namespace
+CUSTOM_NAMESPACE = 'CUSTOM_'
+
+# Each submodule registers its symbols with the os_traits module namespace
+from os_traits.hw.cpu import x86  # noqa
+from os_traits.storage import disk  # noqa
 
 
 def get_symbol_names(prefix=None):
@@ -30,15 +34,10 @@ def get_symbol_names(prefix=None):
 
     :param prefix: Optional string prefix to filter by. e.g. 'HW_'
     """
-    excluded_keys = ('NAMESPACES',)
-    excluded_values = NAMESPACES.values()
-
     return [
         k for k, v in sys.modules[__name__].__dict__.items()
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
-        k not in excluded_keys and
-        v not in excluded_values and
         (prefix is None or v.startswith(prefix))
     ]
 
@@ -49,15 +48,10 @@ def get_traits(prefix=None):
 
     :param prefix: Optional string prefix to filter by. e.g. 'HW_'
     """
-    excluded_keys = ('NAMESPACES',)
-    excluded_values = NAMESPACES.values()
-
     return [
         v for k, v in sys.modules[__name__].__dict__.items()
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
-        k not in excluded_keys and
-        v not in excluded_values and
         (prefix is None or v.startswith(prefix))
     ]
 
@@ -82,4 +76,4 @@ def is_custom(trait):
 
     :param trait: String name of the trait
     """
-    return trait.startswith(NAMESPACES['CUSTOM'])
+    return trait.startswith(CUSTOM_NAMESPACE)

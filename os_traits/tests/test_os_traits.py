@@ -12,37 +12,33 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-"""
-test_os_traits
-----------------------------------
-
-Tests for `os_traits` module.
-"""
-
 import os_traits as ot
+from os_traits.hw.cpu import x86
 from os_traits.tests import base
 
 
-class TestOs_traits(base.TestCase):
+class TestSymbols(base.TestCase):
 
     def test_trait(self):
+        """Simply tests that the constants from submodules are imported into
+        the primary os_traits module space.
+        """
         trait = ot.HW_CPU_X86_SSE42
         self.assertEqual("HW_CPU_X86_SSE42", trait)
+
+        # And the "leaf-module" namespace...
+        self.assertEqual(x86.SSE42, ot.HW_CPU_X86_SSE42)
 
     def test_get_symbol_names(self):
         names = ot.get_symbol_names()
         self.assertIn("HW_CPU_X86_AVX2", names)
         self.assertIn("STORAGE_DISK_SSD", names)
 
-    def test_namespaces(self):
-        namespaces = ot.NAMESPACES
-        self.assertIn(("HARDWARE", "HW_"), namespaces.items())
-        self.assertEqual(7, len(namespaces))
-
     def test_get_traits(self):
-        traits = ot.get_traits(ot.NAMESPACES['X86'])
+        traits = ot.get_traits('HW_CPU')
         self.assertIn("HW_CPU_X86_SSE42", traits)
-        self.assertEqual(35, len(traits))
+        self.assertIn(ot.HW_CPU_X86_AVX2, traits)
+        self.assertNotIn(ot.STORAGE_DISK_SSD, traits)
 
     def test_check_traits(self):
         traits = set(["HW_CPU_X86_SSE42", "HW_CPU_X86_XOP"])
