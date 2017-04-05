@@ -12,25 +12,57 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+import importlib
+import pkgutil
 import sys
 
 import pbr.version
 import six
 
-__version__ = pbr.version.VersionInfo(
-    'os_traits').version_string()
+this_name = __name__
+this_lib = sys.modules[this_name]
+
+__version__ = pbr.version.VersionInfo(this_name).version_string()
 
 # Any user-specified feature/trait is prefixed with the custom namespace
 CUSTOM_NAMESPACE = 'CUSTOM_'
 
-# Each submodule registers its symbols with the os_traits module namespace
-from os_traits.hw.cpu import x86  # noqa
-from os_traits.hw import nic  # noqa
-from os_traits.hw.nic import accel  # noqa
-from os_traits.hw.nic import dcb  # noqa
-from os_traits.hw.nic import offload  # noqa
-from os_traits.hw.nic import sriov  # noqa
-from os_traits.storage import disk  # noqa
+
+def symbolize(mod_name, name):
+    """Given a reference to a Python module object and a short string name for
+    a trait, registers a symbol in the module that corresponds to the full
+    namespaced trait name.
+    """
+    leaf_mod = sys.modules[mod_name]
+    value_base = '_'.join([m.upper() for m in mod_name.split('.')[1:]])
+    value = value_base + '_' + name.upper()
+    setattr(this_lib, value, value)  # os_traits.HW_CPU_X86_SSE
+    setattr(leaf_mod, name.upper(), value)  # os_traits.hw.cpu.x86.SSE
+
+
+def import_submodules(package, recursive=True):
+    """Import all submodules of a module, recursively, including subpackages
+
+    :param package: package (name or actual module)
+    :type package: str | module
+    :rtype: dict[str, types.ModuleType]
+    """
+    if isinstance(package, str):
+        package = importlib.import_module(package)
+    for loader, name, is_pkg in pkgutil.walk_packages(package.__path__):
+        full_name = package.__name__ + '.' + name
+        test_dir = "%s.tests" % this_name
+        if test_dir in full_name:
+            continue
+        imported = importlib.import_module(full_name)
+        for prop in getattr(imported, "TRAITS", []):
+            symbolize(full_name, prop)
+        if recursive and is_pkg:
+            import_submodules(full_name)
+
+
+# This is where the names defined in submodules are imported
+import_submodules(sys.modules.get(__name__))
 
 
 def get_symbol_names(prefix=None):
@@ -39,11 +71,12 @@ def get_symbol_names(prefix=None):
 
     :param prefix: Optional string prefix to filter by. e.g. 'HW_'
     """
+    prefix = prefix or ""
     return [
         k for k, v in sys.modules[__name__].__dict__.items()
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
-        (prefix is None or v.startswith(prefix))
+        v.startswith(prefix)
     ]
 
 
@@ -53,11 +86,12 @@ def get_traits(prefix=None):
 
     :param prefix: Optional string prefix to filter by. e.g. 'HW_'
     """
+    prefix = prefix or ""
     return [
         v for k, v in sys.modules[__name__].__dict__.items()
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
-        (prefix is None or v.startswith(prefix))
+        v.startswith(prefix)
     ]
 
 

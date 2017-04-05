@@ -12,27 +12,25 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
-
-register = utils.register_fn(__name__)
-
-register('TSO')  # TCP segmentation
-register('GRO')  # Generic receive
-register('GSO')  # Generic segmentation
-register('UFO')  # UDP Fragmentation
-register('LRO')  # Large receive
-register('LSO')  # Large send
-register('TCS')  # TCP Checksum
-register('UCS')  # UDP Checksum
-register('SCS')  # SCTP Checksum
-register('L2CRC')  # Layer-2 CRC
-register('FDF')  # Intel Flow-Director Filter
-register('RXVLAN')  # VLAN receive tunnel segmentation
-register('TXVLAN')  # VLAN transmit tunnel segmentation
-register('VXLAN')  # VxLAN tunneling
-register('GRE')  # GRE tunneling
-register('GENEVE')  # Geneve tunneling
-register('TXUDP')  # UDP transmit tunnel segmentation
-register('QINQ')  # QinQ specification
-register('RDMA')  # remote direct memory access
-register('RXHASH')  # receive hashing
+TRAITS = [
+    'TSO',  # TCP segmentation
+    'GRO',  # Generic receive
+    'GSO',  # Generic segmentation
+    'UFO',  # UDP Fragmentation
+    'LRO',  # Large receive
+    'LSO',  # Large send
+    'TCS',  # TCP Checksum
+    'UCS',  # UDP Checksum
+    'SCS',  # SCTP Checksum
+    'L2CRC',  # Layer-2 CRC
+    'FDF',  # Intel Flow-Director Filter
+    'RXVLAN',  # VLAN receive tunnel segmentation
+    'TXVLAN',  # VLAN transmit tunnel segmentation
+    'VXLAN',  # VxLAN tunneling
+    'GRE',  # GRE tunneling
+    'GENEVE',  # Geneve tunneling
+    'TXUDP',  # UDP transmit tunnel segmentation
+    'QINQ',  # QinQ specification
+    'RDMA',  # remote direct memory access
+    'RXHASH',  # receive hashing
+]

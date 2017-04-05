@@ -12,14 +12,12 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
-
-register = utils.register_fn(__name__)
-
 # A few generalized capabilities of some NICs
-register('SRIOV')  # NIC supports partitioning via SR-IOV
-register('MULTIQUEUE')  # >1 receive and transmit queues
-register('VMDQ')  # Virtual machine device queues
-# Some NICs allow processing pipelines to be programmed via FPGAs embedded in
-# the NIC itself...
-register('PROGRAMMABLE_PIPELINE')
+TRAITS = [
+    'SRIOV',  # NIC supports partitioning via SR-IOV
+    'MULTIQUEUE',  # >1 receive and transmit queues
+    'VMDQ',  # Virtual machine device queues
+    # Some NICs allow processing pipelines to be programmed via FPGAs embedded
+    # in the NIC itself...
+    'PROGRAMMABLE_PIPELINE',
+]

@@ -12,15 +12,13 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
-
-register = utils.register_fn(__name__)
-
-register('SSL')  # SSL crypto
-register('IPSEC')  # IP-Sec crypto
-register('TLS')  # TLS crypto
-register('DIFFIEH')  # Diffie-Hellmann  crypto
-register('RSA')  # RSA crypto
-register('ECC')  # Eliptic Curve crypto
-register('LZS')  # LZS compression
-register('DEFLATE')  # Deflate compression
+TRAITS = [
+    'SSL',  # SSL crypto
+    'IPSEC',  # IP-Sec crypto
+    'TLS',  # TLS crypto
+    'DIFFIEH',  # Diffie-Hellmann  crypto
+    'RSA',  # RSA crypto
+    'ECC',  # Eliptic Curve crypto
+    'LZS',  # LZS compression
+    'DEFLATE',  # Deflate compression
+]

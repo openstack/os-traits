@@ -12,53 +12,54 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
 
-register = utils.register_fn(__name__)
+TRAITS = [
+    # ref: https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions
+    'AVX',
+    'AVX2',
+    'CLMUL',
+    'FMA3',
+    'FMA4',
+    'F16C',
+    'MMX',
+    'SSE',
+    'SSE2',
+    'SSE3',
+    'SSSE3',
+    'SSE41',
+    'SSE42',
+    'SSE4A',
+    'XOP',
+    '3DNOW',
 
-# ref: https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions
-register('AVX')
-register('AVX2')
-register('CLMUL')
-register('FMA3')
-register('FMA4')
-register('F16C')
-register('MMX')
-register('SSE')
-register('SSE2')
-register('SSE3')
-register('SSSE3')
-register('SSE41')
-register('SSE42')
-register('SSE4A')
-register('XOP')
-register('3DNOW')
-# ref: https://en.wikipedia.org/wiki/AVX-512
-register('AVX512F')  # foundation
-register('AVX512CD')  # conflict detection
-register('AVX512PF')  # prefetch
-register('AVX512ER')  # exponential + reciprocal
-register('AVX512VL')  # vector length extensions
-register('AVX512BW')  # byte + word
-register('AVX512DQ')  # double word + quad word
-# ref: https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
-register('ABM')
-register('BMI')
-register('BMI2')
-register('TBM')
-# ref: https://en.wikipedia.org/wiki/AES_instruction_set
-register('AES-NI')
-# ref: https://en.wikipedia.org/wiki/Intel_SHA_extensions
-register('SHA')
-# ref: https://en.wikipedia.org/wiki/Intel_MPX
-register('MPX')
-# ref: https://en.wikipedia.org/wiki/Software_Guard_Extensions
-register('SGX')
-# ref: https://en.wikipedia.org/wiki/Transactional_Synchronization_Extensions
-register('TSX')
-# ref: https://en.wikipedia.org/wiki/Advanced_Synchronization_Facility
-register('ASF')
-# ref: https://en.wikipedia.org/wiki/VT-x
-register('VMX')
-# ref: https://en.wikipedia.org/wiki/AMD-V
-register('SVM')
+    # ref: https://en.wikipedia.org/wiki/AVX-512
+    'AVX512F',  # foundation
+    'AVX512CD',  # conflict detection
+    'AVX512PF',  # prefetch
+    'AVX512ER',  # exponential + reciprocal
+    'AVX512VL',  # vector length extensions
+    'AVX512BW',  # byte + word
+    'AVX512DQ',  # double word + quad word
+    # ref: https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
+    'ABM',
+    'BMI',
+    'BMI2',
+    'TBM',
+    # ref: https://en.wikipedia.org/wiki/AES_instruction_set
+    'AES-NI',
+    # ref: https://en.wikipedia.org/wiki/Intel_SHA_extensions
+    'SHA',
+    # ref: https://en.wikipedia.org/wiki/Intel_MPX
+    'MPX',
+    # ref: https://en.wikipedia.org/wiki/Software_Guard_Extensions
+    'SGX',
+    # ref:
+    #    https://en.wikipedia.org/wiki/Transactional_Synchronization_Extensions
+    'TSX',
+    # ref: https://en.wikipedia.org/wiki/Advanced_Synchronization_Facility
+    'ASF',
+    # ref: https://en.wikipedia.org/wiki/VT-x
+    'VMX',
+    # ref: https://en.wikipedia.org/wiki/AMD-V
+    'SVM',
+]

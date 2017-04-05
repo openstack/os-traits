@@ -12,10 +12,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
-
-register = utils.register_fn(__name__)
-
-
-register('HDD')  # spinning oxide
-register('SSD')  # solid-state disks
+TRAITS = [
+    'HDD',  # spinning oxide
+    'SSD',  # solid-state disks
+]

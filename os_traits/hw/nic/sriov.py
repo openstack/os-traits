@@ -12,14 +12,12 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
-
-register = utils.register_fn(__name__)
-
-# The function (virtual or physical) can restrict transmit rates
-register('QOS_TX')
-# The function (virtual or physical) can restrict receive rates
-register('QOS_RX')
-# The function (virtual or physical) can set up multiple receive and transmit
-# queues for receive-side scaling
-register('MULTIQUEUE')
+TRAITS = [
+    # Individual virtual functions can restrict transmit rates
+    'QOS_TX',
+    # Individual virtual functions can restrict receive rates
+    'QOS_RX',
+    # Individual virtual functions can set up multiple receive and transmit
+    # queues for receive-side scaling
+    'MULTIQUEUE',
+]

@@ -12,13 +12,11 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from os_traits import utils
-
-register = utils.register_fn(__name__)
-
-# IEEE 802.1Qbb Priority-flow control
-register('PFC')
-# IEEE 802.1Qaz Enhanced Transmission Selection
-register('ETS')
-# IEEE 802.1Qau Quantized Congestion Notification
-register('QCN')
+TRAITS = [
+    # IEEE 802.1Qbb Priority-flow control
+    'PFC',
+    # IEEE 802.1Qaz Enhanced Transmission Selection
+    'ETS',
+    # IEEE 802.1Qau Quantized Congestion Notification
+    'QCN',
+]
