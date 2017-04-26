@@ -36,6 +36,7 @@ class TestSymbols(base.TestCase):
         self.assertIn("HW_CPU_X86_AVX2", names)
         self.assertIn("STORAGE_DISK_SSD", names)
         self.assertIn("HW_NIC_SRIOV", names)
+        self.assertIn("MISC_SHARES_VIA_AGGREGATE", names)
 
     def test_get_traits(self):
         traits = ot.get_traits('HW_CPU')
