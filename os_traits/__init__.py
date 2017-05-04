@@ -65,21 +65,6 @@ def import_submodules(package, recursive=True):
 import_submodules(sys.modules.get(__name__))
 
 
-def get_symbol_names(prefix=None):
-    """Returns the names of symbols of trait strings in the os_traits module,
-    optionally filtered by a supplied prefix.
-
-    :param prefix: Optional string prefix to filter by. e.g. 'HW_'
-    """
-    prefix = prefix or ""
-    return [
-        k for k, v in sys.modules[__name__].__dict__.items()
-        if isinstance(v, six.string_types) and
-        not k.startswith('_') and
-        v.startswith(prefix)
-    ]
-
-
 def get_traits(prefix=None):
     """Returns the trait strings in the os_traits module, optionally filtered
     by a supplied prefix.

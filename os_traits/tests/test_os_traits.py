@@ -31,13 +31,6 @@ class TestSymbols(base.TestCase):
         self.assertEqual(x86.SSE42, ot.HW_CPU_X86_SSE42)
         self.assertEqual(offload.TSO, ot.HW_NIC_OFFLOAD_TSO)
 
-    def test_get_symbol_names(self):
-        names = ot.get_symbol_names()
-        self.assertIn("HW_CPU_X86_AVX2", names)
-        self.assertIn("STORAGE_DISK_SSD", names)
-        self.assertIn("HW_NIC_SRIOV", names)
-        self.assertIn("MISC_SHARES_VIA_AGGREGATE", names)
-
     def test_get_traits(self):
         traits = ot.get_traits('HW_CPU')
         self.assertIn("HW_CPU_X86_SSE42", traits)

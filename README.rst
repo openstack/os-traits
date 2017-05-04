@@ -29,34 +29,7 @@ traits constants::
     >>> print ot.HW_CPU_X86_SSE42
     HW_CPU_X86_SSE42
 
-Don't know what the symbol names are for the `os_traits` module? There's a
-helper method for that::
-
-    >>> import pprint
-    >>> pprint.pprint(ot.get_symbol_names())
-    [...
-    <snip>
-    'HW_CPU_X86_AVX2',
-    'HW_CPU_X86_SGX',
-    'HW_CPU_X86_AVX',
-    'HW_CPU_X86_AVX512BW',
-    'HW_CPU_X86_AVX512DQ',
-    'HW_CPU_X86_SSE',
-    'HW_CPU_X86_SHA',
-    'HW_CPU_X86_AVX512F',
-    'HW_CPU_X86_F16C',
-    'HW_CPU_X86_SSE41',
-    'HW_CPU_X86_SSE42',
-    'HW_CPU_X86_VMX',
-    'HW_CPU_X86_ASF',
-    'HW_CPU_X86_BMI2',
-    'HW_CPU_X86_CLMUL',
-    'HW_CPU_X86_AVX512VL',
-    'HW_CPU_X86_AVX512PF',
-    'HW_CPU_X86_XOP',
-    'HW_CPU_X86_BMI',
-    'HW_CPU_X86_ABM',
-    'HW_CPU_X86_3DNOW']
+You can get a list of the os_traits symbols by simply doing a dir(os_traits).
 
 Want to see the trait strings for a subset of traits? There's a method for that too::
 
