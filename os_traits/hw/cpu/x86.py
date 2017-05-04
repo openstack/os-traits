@@ -46,7 +46,7 @@ TRAITS = [
     'BMI2',
     'TBM',
     # ref: https://en.wikipedia.org/wiki/AES_instruction_set
-    'AES-NI',
+    'AESNI',
     # ref: https://en.wikipedia.org/wiki/Intel_SHA_extensions
     'SHA',
     # ref: https://en.wikipedia.org/wiki/Intel_MPX

@@ -12,6 +12,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+import re
+
 import os_traits as ot
 from os_traits.hw.cpu import x86
 from os_traits.hw.nic import offload
@@ -53,3 +55,11 @@ class TestSymbols(base.TestCase):
     def test_is_custom(self):
         self.assertTrue(ot.is_custom('CUSTOM_FOO'))
         self.assertFalse(ot.is_custom('HW_CPU_X86_SSE42'))
+
+    def test_trait_names_match_regex(self):
+        traits = ot.get_traits()
+        valid_name = re.compile("^[A-Z][A-Z0-9_]*$")
+        for t in traits:
+            match = valid_name.match(t)
+            if not match:
+                self.fail("Trait %s does not validate name regex." % t)
