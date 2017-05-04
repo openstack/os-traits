@@ -37,6 +37,8 @@ class TestSymbols(base.TestCase):
         self.assertIn(ot.HW_CPU_X86_AVX2, traits)
         self.assertNotIn(ot.STORAGE_DISK_SSD, traits)
         self.assertNotIn(ot.HW_NIC_SRIOV, traits)
+        self.assertNotIn('CUSTOM_NAMESPACE', traits)
+        self.assertNotIn('os_traits', traits)
 
     def test_check_traits(self):
         traits = set(["HW_CPU_X86_SSE42", "HW_CPU_X86_XOP"])

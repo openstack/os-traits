@@ -37,7 +37,7 @@ def symbolize(mod_name, name):
     value_base = '_'.join([m.upper() for m in mod_name.split('.')[1:]])
     value = value_base + '_' + name.upper()
     setattr(this_lib, value, value)  # os_traits.HW_CPU_X86_SSE
-    setattr(leaf_mod, name.upper(), value)  # os_traits.hw.cpu.x86.SSE
+    setattr(leaf_mod, name, value)  # os_traits.hw.cpu.x86.SSE
 
 
 def import_submodules(package, recursive=True):
@@ -76,7 +76,8 @@ def get_traits(prefix=None):
         v for k, v in sys.modules[__name__].__dict__.items()
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
-        v.startswith(prefix)
+        v.startswith(prefix) and
+        k not in ('CUSTOM_NAMESPACE', 'this_name')
     ]
 
 
