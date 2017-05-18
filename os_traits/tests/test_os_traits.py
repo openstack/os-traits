@@ -57,6 +57,18 @@ class TestSymbols(base.TestCase):
         self.assertEqual((traits, not_traits),
                          ot.check_traits(check_traits))
 
+    def test_check_traits_filter_by_prefix(self):
+        hw_trait = "HW_CPU_X86_SSE42"
+        storage_trait = "STORAGE_DISK_SSD"
+
+        check_traits = [hw_trait, storage_trait]
+        self.assertEqual((set([hw_trait]), set([storage_trait])),
+                         ot.check_traits(check_traits, "HW"))
+        self.assertEqual((set([storage_trait]), set([hw_trait])),
+                         ot.check_traits(check_traits, "STORAGE"))
+        self.assertEqual((set(), set([hw_trait, storage_trait])),
+                         ot.check_traits(check_traits, "MISC"))
+
     def test_is_custom(self):
         self.assertTrue(ot.is_custom('CUSTOM_FOO'))
         self.assertFalse(ot.is_custom('HW_CPU_X86_SSE42'))
