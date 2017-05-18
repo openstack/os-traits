@@ -33,4 +33,7 @@ TRAITS = [
     'QINQ',  # QinQ specification
     'RDMA',  # remote direct memory access
     'RXHASH',  # receive hashing
+    'RX',  # RX checksumming
+    'TX',  # RX checksumming
+    'SG',  # scatter-gather
 ]
