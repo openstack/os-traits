@@ -16,6 +16,7 @@ import re
 
 import os_traits as ot
 from os_traits.hw.cpu import x86
+from os_traits.hw.gpu import api
 from os_traits.hw.nic import offload
 from os_traits.tests import base
 
@@ -31,6 +32,7 @@ class TestSymbols(base.TestCase):
 
         # And the "leaf-module" namespace...
         self.assertEqual(x86.SSE42, ot.HW_CPU_X86_SSE42)
+        self.assertEqual(api.DIRECTX_V10, ot.HW_GPU_API_DIRECTX_V10)
         self.assertEqual(offload.TSO, ot.HW_NIC_OFFLOAD_TSO)
 
     def test_get_traits(self):
