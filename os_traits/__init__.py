@@ -19,10 +19,11 @@ import sys
 import pbr.version
 import six
 
-this_name = __name__
-this_lib = sys.modules[this_name]
+THIS_NAME = __name__
+THIS_LIB = sys.modules[THIS_NAME]
+TEST_DIR = "%s.tests" % THIS_NAME
 
-__version__ = pbr.version.VersionInfo(this_name).version_string()
+__version__ = pbr.version.VersionInfo(THIS_NAME).version_string()
 
 # Any user-specified feature/trait is prefixed with the custom namespace
 CUSTOM_NAMESPACE = 'CUSTOM_'
@@ -36,7 +37,7 @@ def symbolize(mod_name, name):
     leaf_mod = sys.modules[mod_name]
     value_base = '_'.join([m.upper() for m in mod_name.split('.')[1:]])
     value = value_base + '_' + name.upper()
-    setattr(this_lib, value, value)  # os_traits.HW_CPU_X86_SSE
+    setattr(THIS_LIB, value, value)  # os_traits.HW_CPU_X86_SSE
     setattr(leaf_mod, name, value)  # os_traits.hw.cpu.x86.SSE
 
 
@@ -51,8 +52,7 @@ def import_submodules(package, recursive=True):
         package = importlib.import_module(package)
     for loader, name, is_pkg in pkgutil.walk_packages(
             package.__path__, package.__name__ + '.'):
-        test_dir = "%s.tests" % this_name
-        if test_dir in name:
+        if TEST_DIR in name:
             continue
         imported = importlib.import_module(name)
         for prop in getattr(imported, "TRAITS", []):
@@ -77,7 +77,8 @@ def get_traits(prefix=None):
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
         v.startswith(prefix) and
-        k not in ('CUSTOM_NAMESPACE', 'this_name')
+        # skip module constants
+        k not in ('CUSTOM_NAMESPACE', 'THIS_NAME', 'THIS_LIB', 'TEST_DIR')
     ]
 
 
