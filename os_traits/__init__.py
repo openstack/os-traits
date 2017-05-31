@@ -49,16 +49,16 @@ def import_submodules(package, recursive=True):
     """
     if isinstance(package, str):
         package = importlib.import_module(package)
-    for loader, name, is_pkg in pkgutil.walk_packages(package.__path__):
-        full_name = package.__name__ + '.' + name
+    for loader, name, is_pkg in pkgutil.walk_packages(
+            package.__path__, package.__name__ + '.'):
         test_dir = "%s.tests" % this_name
-        if test_dir in full_name:
+        if test_dir in name:
             continue
-        imported = importlib.import_module(full_name)
+        imported = importlib.import_module(name)
         for prop in getattr(imported, "TRAITS", []):
-            symbolize(full_name, prop)
+            symbolize(name, prop)
         if recursive and is_pkg:
-            import_submodules(full_name)
+            import_submodules(name)
 
 
 # This is where the names defined in submodules are imported
