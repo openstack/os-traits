@@ -5,3 +5,7 @@ build/
 .venv
 .testrepository
 .tox
+
+# pbr-generated stuff
+/AUTHORS
+/ChangeLog
