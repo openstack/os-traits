@@ -1,25 +1,42 @@
-.. os-traits documentation master file, created by
-   sphinx-quickstart on Tue Jul  9 22:26:36 2013.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+=========
+os-traits
+=========
 
-Welcome to os-traits' documentation!
-========================================================
+`os-traits` is a library containing standardized trait strings.
 
-Contents:
+Traits are strings that represent a feature of some resource provider.  This
+library contains the catalog of constants that have been standardized in the
+OpenStack community to refer to a particular hardware, virtualization, storage,
+network, or device trait.
+
+Installation Guide
+------------------
 
 .. toctree::
    :maxdepth: 2
 
-   readme
-   installation
-   usage
-   contributing
+   install/index
 
-Indices and tables
-==================
+Usage Guide
+-----------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+   :maxdepth: 2
 
+   user/index
+
+Contributor Guide
+-----------------
+
+.. toctree::
+   :maxdepth: 2
+
+   contributor/index
+
+Reference
+---------
+
+.. toctree::
+   :maxdepth: 2
+
+   reference/index
