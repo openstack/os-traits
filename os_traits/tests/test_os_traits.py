@@ -38,7 +38,7 @@ class TestSymbols(base.TestCase):
                          ot.HW_GPU_RESOLUTION_W1920H1080)
         self.assertEqual(offload.TSO, ot.HW_NIC_OFFLOAD_TSO)
 
-    def test_get_traits(self):
+    def test_get_traits_filter_by_prefix(self):
         traits = ot.get_traits('HW_CPU')
         self.assertIn("HW_CPU_X86_SSE42", traits)
         self.assertIn(ot.HW_CPU_X86_AVX2, traits)
@@ -46,6 +46,22 @@ class TestSymbols(base.TestCase):
         self.assertNotIn(ot.HW_NIC_SRIOV, traits)
         self.assertNotIn('CUSTOM_NAMESPACE', traits)
         self.assertNotIn('os_traits', traits)
+
+    def test_get_traits_filter_by_suffix(self):
+        traits = ot.get_traits(suffix='SSE42')
+        self.assertIn("HW_CPU_X86_SSE42", traits)
+        self.assertEqual(1, len(traits))
+
+    def test_get_traits_filter_by_prefix_and_suffix(self):
+        traits = ot.get_traits(prefix='HW_NIC', suffix='RSA')
+        self.assertIn("HW_NIC_ACCEL_RSA", traits)
+        self.assertNotIn(ot.HW_NIC_ACCEL_TLS, traits)
+        self.assertEqual(1, len(traits))
+
+        traits = ot.get_traits(prefix='HW_NIC', suffix='TX')
+        self.assertIn("HW_NIC_SRIOV_QOS_TX", traits)
+        self.assertIn("HW_NIC_OFFLOAD_TX", traits)
+        self.assertEqual(2, len(traits))
 
     def test_check_traits(self):
         traits = set(["HW_CPU_X86_SSE42", "HW_CPU_X86_XOP"])
