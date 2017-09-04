@@ -65,18 +65,21 @@ def import_submodules(package, recursive=True):
 import_submodules(sys.modules.get(__name__))
 
 
-def get_traits(prefix=None):
+def get_traits(prefix=None, suffix=None):
     """Returns the trait strings in the os_traits module, optionally filtered
-    by a supplied prefix.
+    by a supplied prefix and suffix.
 
     :param prefix: Optional string prefix to filter by. e.g. 'HW_'
+    :param suffix: Optional string suffix to filter by, e.g. 'SSE'
     """
     prefix = prefix or ""
+    suffix = suffix or ""
     return [
         v for k, v in sys.modules[__name__].__dict__.items()
         if isinstance(v, six.string_types) and
         not k.startswith('_') and
         v.startswith(prefix) and
+        v.endswith(suffix) and
         # skip module constants
         k not in ('CUSTOM_NAMESPACE', 'THIS_NAME', 'THIS_LIB', 'TEST_DIR')
     ]
