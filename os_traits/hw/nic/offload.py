@@ -36,4 +36,5 @@ TRAITS = [
     'RX',  # RX checksumming
     'TX',  # RX checksumming
     'SG',  # scatter-gather
+    'SWITCHDEV',  # Offload datapath rules
 ]
