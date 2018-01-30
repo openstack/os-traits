@@ -15,3 +15,7 @@ Pull requests submitted through GitHub will be ignored.
 Bugs should be filed on Launchpad, not GitHub:
 
    https://bugs.launchpad.net/os-traits
+
+The code is hosted at:
+
+   https://git.openstack.org/cgit/openstack/os-traits
