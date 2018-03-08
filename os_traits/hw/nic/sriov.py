@@ -20,4 +20,9 @@ TRAITS = [
     # Individual virtual functions can set up multiple receive and transmit
     # queues for receive-side scaling
     'MULTIQUEUE',
+    # If associated with a resource provider representing a physical function,
+    # all VFs on the PF are marked as trusted. If set on a resource provider
+    # representing a single virtual function, the VF is individually marked as
+    # trusted.
+    'TRUSTED',
 ]
