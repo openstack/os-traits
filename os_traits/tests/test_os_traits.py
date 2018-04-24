@@ -47,6 +47,16 @@ class TestSymbols(base.TestCase):
         self.assertNotIn('CUSTOM_NAMESPACE', traits)
         self.assertNotIn('os_traits', traits)
 
+    def test_dunderinit_and_nondunderinit(self):
+        """Make sure we can have both dunderinit'd traits and submodules
+        co-exist in the same namespace.
+        """
+        traits = ot.get_traits('COMPUTE')
+        self.assertIn("COMPUTE_DEVICE_TAGGING", traits)
+        self.assertIn(ot.COMPUTE_DEVICE_TAGGING, traits)
+        self.assertIn("COMPUTE_VOLUME_EXTEND", traits)
+        self.assertIn(ot.COMPUTE_NET_ATTACH_INTERFACE, traits)
+
     def test_get_traits_filter_by_suffix(self):
         traits = ot.get_traits(suffix='SSE42')
         self.assertIn("HW_CPU_X86_SSE42", traits)
