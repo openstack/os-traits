@@ -41,6 +41,7 @@ class TestSymbols(base.TestCase):
     def test_get_traits_filter_by_prefix(self):
         traits = ot.get_traits('HW_CPU')
         self.assertIn("HW_CPU_X86_SSE42", traits)
+        self.assertIn("HW_CPU_HYPERTHREADING", traits)
         self.assertIn(ot.HW_CPU_X86_AVX2, traits)
         self.assertNotIn(ot.STORAGE_DISK_SSD, traits)
         self.assertNotIn(ot.HW_NIC_SRIOV, traits)
