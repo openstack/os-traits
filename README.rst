@@ -13,3 +13,4 @@ network, or device trait.
 * Documentation: https://docs.openstack.org/os-traits/latest/
 * Source: http://git.openstack.org/cgit/openstack/os-traits
 * Bugs: https://bugs.launchpad.net/os-traits
+* Release Notes: https://docs.openstack.org/releasenotes/os-traits
