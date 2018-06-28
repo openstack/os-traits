@@ -15,4 +15,6 @@
 TRAITS = [
     # The virt driver supports associating a tag with a device *at boot time*
     'DEVICE_TAGGING',
+    # The virt driver supports trusted image certificate validation
+    'TRUSTED_CERTS',
 ]
