@@ -14,6 +14,7 @@
 
 import importlib
 import pkgutil
+import re
 import sys
 
 import pbr.version
@@ -107,3 +108,22 @@ def is_custom(trait):
     :param trait: String name of the trait
     """
     return trait.startswith(CUSTOM_NAMESPACE)
+
+
+def normalize_name(name):
+    """Converts an input string to a legal* custom trait name.
+
+    Legal custom trait names are prefixed with CUSTOM_ and contain only the
+    characters A-Z, 0-9, and _ (underscore).
+
+    *Does not attempt to handle length restrictions.
+
+    :param name: A string to be converted.
+    :return: A legal* custom trait name.
+    """
+    if name is None:
+        return None
+    # Replace non-alphanumeric characters with underscores
+    norm_name = re.sub('[^0-9A-Za-z]+', '_', name)
+    # Bug #1762789: Do .upper after replacing non alphanumerics.
+    return CUSTOM_NAMESPACE + norm_name.upper()

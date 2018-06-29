@@ -107,3 +107,20 @@ class TestSymbols(base.TestCase):
             match = valid_name.match(t)
             if not match:
                 self.fail("Trait %s does not validate name regex." % t)
+
+    def test_normalize_name(self):
+        values = [
+            ("foo", "CUSTOM_FOO"),
+            ("VCPU", "CUSTOM_VCPU"),
+            ("CUSTOM_BOB", "CUSTOM_CUSTOM_BOB"),
+            ("CUSTM_BOB", "CUSTOM_CUSTM_BOB"),
+            (u"Fu\xdfball", u"CUSTOM_FU_BALL"),
+            ("abc-123", "CUSTOM_ABC_123"),
+            ("Hello, world!  This is a test ^_^",
+             "CUSTOM_HELLO_WORLD_THIS_IS_A_TEST_"),
+            ("  leading and trailing spaces  ",
+             "CUSTOM__LEADING_AND_TRAILING_SPACES_"),
+        ]
+        for test_value, expected in values:
+            result = ot.normalize_name(test_value)
+            self.assertEqual(expected, result)
