@@ -3,7 +3,7 @@ build/
 *.pyc
 *.swp
 .venv
-.testrepository
+.stestr/
 .tox
 
 # pbr-generated stuff
