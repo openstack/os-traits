@@ -66,6 +66,7 @@ TRAITS = [
     'OPENGL_V4_4',
     'OPENGL_V4_5',
     # ref: https://en.wikipedia.org/wiki/CUDA
+    # ref: https://developer.nvidia.com/cuda-toolkit-archive
     'CUDA_V1_0',
     'CUDA_V1_1',
     'CUDA_V1_2',
@@ -84,4 +85,9 @@ TRAITS = [
     'CUDA_V6_2',
     'CUDA_V7_0',
     'CUDA_V7_1',
+    'CUDA_V7_5',
+    'CUDA_V8_0',
+    'CUDA_V9_0',
+    'CUDA_V9_1',
+    'CUDA_V9_2',
 ]
