@@ -2,6 +2,8 @@
 Reference
 =========
 
+.. contents:: :local:
+
 CUDA
 ----
 
@@ -56,3 +58,33 @@ the CUDA SDK 8.0 is capable of working with::
 For more information on CUDA, see the `Wikipedia article`_.
 
 .. _Wikipedia article: https://en.wikipedia.org/wiki/CUDA
+
+AMD SEV
+-------
+
+While data is typically encrypted today when stored on disk, it is
+stored in DRAM in the clear.  This can leave the data vulnerable to
+snooping by unauthorized administrators or software, or by hardware
+probing.  New non-volatile memory technology (NVDIMM) exacerbates this
+problem since an NVDIMM chip can be physically removed from a system
+with the data intact, similar to a hard drive.  Without encryption any
+stored information such as sensitive data, passwords, or secret keys
+can be easily compromised.
+
+`AMD's SEV (Secure Encrypted Virtualization)
+<https://developer.amd.com/sev/>`_ is a VM protection technology which
+transparently encrypts the memory of each VM with a unique key.  It
+can also calculate a signature of the memory contents, which can be
+sent to the VM's owner as an attestation that the memory was encrypted
+correctly by the firmware.  SEV is particularly applicable to cloud
+computing since it can reduce the amount of trust VMs need to place in
+the hypervisor and administrator of their host system.
+
+The ``os_traits.hw.cpu.amd.SEV`` trait can be used to indicate that a
+compute host contains support for SEV not only on-CPU, but also in all
+other layers of the hypervisor stack required in order to take
+advantage of this feature: the kernel, QEMU, and libvirt.  This trait
+can be specified as required by a flavor extra spec or image property
+``trait:HW_CPU_AMD_SEV=required`` in order to indicate that VMs with
+that flavor or image must only be booted on SEV-capable hosts with the
+SEV functionality enabled.
