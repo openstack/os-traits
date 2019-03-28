@@ -12,6 +12,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+# This is fed from the list at
+# https://docs.openstack.org/image-guide/image-formats.html#disk-formats
+# and should be kept up to date with same.
 TRAITS = [
     # Amazon kernel, machine, and ramdisk images
     'TYPE_AKI',
