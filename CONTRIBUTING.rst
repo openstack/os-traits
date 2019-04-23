@@ -18,4 +18,4 @@ Bugs should be filed on StoryBoard, not GitHub:
 
 The code is hosted at:
 
-   https://git.openstack.org/cgit/openstack/os-traits
+   https://opendev.org/openstack/os-traits
