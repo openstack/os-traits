@@ -80,11 +80,7 @@ correctly by the firmware.  SEV is particularly applicable to cloud
 computing since it can reduce the amount of trust VMs need to place in
 the hypervisor and administrator of their host system.
 
-The ``os_traits.hw.cpu.amd.SEV`` trait can be used to indicate that a
-compute host contains support for SEV not only on-CPU, but also in all
-other layers of the hypervisor stack required in order to take
-advantage of this feature: the kernel, QEMU, and libvirt.  This trait
-can be specified as required by a flavor extra spec or image property
-``trait:HW_CPU_AMD_SEV=required`` in order to indicate that VMs with
-that flavor or image must only be booted on SEV-capable hosts with the
-SEV functionality enabled.
+The ``os_traits.hw.cpu.amd.SEV`` trait is reserved in order to
+indicate that a compute host contains support for SEV not only on-CPU,
+but also in all other layers of the hypervisor stack required in order
+to take advantage of this feature.
