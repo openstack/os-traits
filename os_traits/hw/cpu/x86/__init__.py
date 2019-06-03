@@ -59,7 +59,27 @@ TRAITS = [
     # ref: https://en.wikipedia.org/wiki/Advanced_Synchronization_Facility
     'ASF',
     # ref: https://en.wikipedia.org/wiki/VT-x
+    # NOTE(kchamart): The 'VMX' trait is Intel-only, and does not belong
+    # in this file (which is supposed to be a "common" file for all
+    # x86-related).  But we need to retain it here forever to not cause
+    # Placement breakage.
     'VMX',
     # ref: https://en.wikipedia.org/wiki/AMD-V
+    # NOTE(kchamart): The 'SVM' trait is AMD-only, and does not belong
+    # in this "common" file.  But we need to retain it here forever to
+    # not cause Placement breakage.
     'SVM',
+    # ref: https://git.qemu.org/?p=qemu.git;a=blob;f=docs/qemu-cpu-models.texi
+    # Recommended to allow guest OS to use 1 GB size memory pages.  Not
+    # included by default in any of the Intel and AMD CPU models.  So
+    # this should be explicitly turned on for all Intel and AMD CPU
+    # models.
+    'PDPE1GB',
+    # ref: https://git.qemu.org/?p=qemu.git;a=blob;f=docs/qemu-cpu-models.texi
+    # Required to enable stronger Spectre v2 (CVE-2017-5715) fixes in
+    # some operating systems.  This flag must be explicitly turned on
+    # for *all* Intel and AMD CPU models.  (Prerequisite: host CPU
+    # microcode needs to support this feature before it can be used for
+    # guest CPUs).
+    'STIBP',
 ]

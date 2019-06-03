@@ -14,6 +14,18 @@
 
 
 TRAITS = [
-    # ref: https://developer.amd.com/sev/
+    # ref: https://docs.openstack.org/os-traits/latest/contributor/index.html#trait-lifecycle-policy # noqa
+    # NOTE(kchamart): This file is deprecated.  The 'SEV' trait is
+    # AMD-only, so it is copied to hw/cpu/amd.py; it is retained here
+    # not to cause Placement breakage.  All AMD-only traits are being
+    # tracked under: hw/cpu/x86/amd.py.  And the traits common to both
+    # AMD _and_ Intel are being tracked here: hw/cpu/x86/__init__.py.
+    #
+    # NOTE(aspiers): This trait was never used for anything, since the
+    # first bit of SEV code to use an SEV trait will land after this
+    # https://review.opendev.org/#/c/638680/ which has an explicit
+    # 'Depends-On' against the change I1c9a72d19ef ("hw: cpu: Rework the
+    # directory layout; add missing traits"), and is actually blocked
+    # until I1c9a72d19ef merges *and* gets released.
     'SEV',
 ]
