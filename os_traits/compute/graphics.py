@@ -17,8 +17,11 @@ TRAITS = [
     # image metadata property
     # https://github.com/openstack/nova/blob/1f74441/nova/objects/fields.py#L501-L509
     'MODEL_CIRRUS',
+    'MODEL_GOP',
+    'MODEL_NONE',
     'MODEL_QXL',
     'MODEL_VGA',
+    'MODEL_VIRTIO',
     'MODEL_VMVGA',
     'MODEL_XEN',
 ]
