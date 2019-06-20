@@ -21,4 +21,11 @@ TRAITS = [
     'NODE',
     # The virt driver supports trusted image certificate validation
     'TRUSTED_CERTS',
+    # The virt driver supports cold migrating to the same compute service host.
+    # This really only works for a cluster-type hypervisor driver like the
+    # vCenter driver which is a single compute service host managing a vCenter
+    # cluster of potentially hundreds of ESXi hosts. Note that this trait will
+    # not make sense to use in GET /allocation_candidates until/unless there is
+    # a way to tie it to the condition of SAME_HOST-ness.
+    'SAME_HOST_COLD_MIGRATE',
 ]
