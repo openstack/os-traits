@@ -40,6 +40,7 @@ TRAITS = [
     'AVX512VL',  # vector length extensions
     'AVX512BW',  # byte + word
     'AVX512DQ',  # double word + quad word
+    'AVX512VNNI',  # vector neural network instructions
     # ref: https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
     'ABM',
     'BMI',
