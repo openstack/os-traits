@@ -13,6 +13,7 @@
 # under the License.
 
 TRAITS = [
+    # ref: http://specs.openstack.org/openstack/nova-specs/specs/train/approved/expose-auto-converge-post-copy.html#proposed-change  # noqa
     'AUTO_CONVERGE',
     'POST_COPY',
 ]
