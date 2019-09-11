@@ -53,3 +53,13 @@ html_theme = 'openstackdocs'
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
 html_last_updated_fmt = '%Y-%m-%d %H:%M'
+
+# -- Options for LaTeX output -------------------------------------------------
+
+# Grouping the document tree into LaTeX files. List of tuples
+# (source start file, target name, title, author, documentclass
+# [howto/manual]).
+latex_documents = [
+    ('index', 'doc-os-traits.tex', u'os-traits Documentation',
+     u'OpenStack Foundation', 'manual'),
+]
