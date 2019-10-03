@@ -30,16 +30,78 @@ __version__ = pbr.version.VersionInfo(THIS_NAME).version_string()
 CUSTOM_NAMESPACE = 'CUSTOM_'
 
 
+# TODO(efried): This is unused internally; it exists for backward compatibility
+#  in case some consumer was actually calling it, which would be weird.
+#  Consider removing it (and privatizing all the helpers in this module).
 def symbolize(mod_name, name):
-    """Given a reference to a Python module object and a short string name for
-    a trait, registers a symbol in the module that corresponds to the full
-    namespaced trait name.
+    _symbolize(mod_name, [name])
+
+
+def _symbolize(mod_name, props):
+    """Given a reference to a Python module object and an iterable of short
+    string names for traits, registers symbols in the module corresponding to
+    the full namespaced name for each trait.
     """
-    leaf_mod = sys.modules[mod_name]
-    value_base = '_'.join([m.upper() for m in mod_name.split('.')[1:]])
-    value = value_base + '_' + name.upper()
-    setattr(THIS_LIB, value, value)  # os_traits.HW_CPU_X86_SSE
-    setattr(leaf_mod, name, value)  # os_traits.hw.cpu.x86.SSE
+    for prop in props:
+        leaf_mod = sys.modules[mod_name]
+        value_base = '_'.join([m.upper() for m in mod_name.split('.')[1:]])
+        value = value_base + '_' + prop.upper()
+        setattr(THIS_LIB, value, value)  # os_traits.HW_CPU_X86_SSE
+        setattr(leaf_mod, prop, value)  # os_traits.hw.cpu.x86.SSE
+
+
+def _walk_submodules(package, recursive, callback, **kwargs):
+    """Recursively walk the repository's submodules and invoke a callback for
+    each module with the list of short trait names found therein.
+
+    :param package: The package (name or module obj) to start from.
+    :param recursive: If True, recurse depth-first.
+    :param callback: Callable to be invoked for each module. The signature is::
+
+            callback(mod_name, props, **kwargs)
+
+        * mod_name: the string name of the module (e.g. 'os_traits.hw.cpu').
+        * props: an iterable of short string names for traits, gleaned from the
+          TRAITS member of that module, defaulting to [].
+        * kwargs: The same kwargs as passed to _walk_submodules, useful for
+          tracking data across calls.
+    :param kwargs: Arbitrary keyword arguments to be passed to the callback on
+        each invocation.
+    """
+    if isinstance(package, str):
+        package = importlib.import_module(package)
+    for loader, mod_name, is_pkg in pkgutil.walk_packages(
+            package.__path__, package.__name__ + '.'):
+        if TEST_DIR in mod_name:
+            continue
+        imported = importlib.import_module(mod_name)
+        props = getattr(imported, "TRAITS", [])
+        callback(mod_name, props, **kwargs)
+        if recursive and is_pkg:
+            _walk_submodules(mod_name, recursive, callback, **kwargs)
+
+
+def _visualize(mod_name, props, seen=None):
+    if mod_name in seen:
+        return
+    seen.add(mod_name)
+    components = mod_name.split('.')
+    tab = '   '
+    # Print the module name
+    indent = tab * (len(components) - 1)
+    print('%s%s:' % (indent, components[-1].upper()))
+    # Print the properties
+    indent = tab * len(components)
+    if props:
+        print('%s%s' % (indent, ', '.join(props)))
+
+
+def print_tree():
+    """Print (to stdout) a visual representation of all the namespaces and the
+    (short) trait names defined therein.
+
+    """
+    _walk_submodules(sys.modules.get(__name__), True, _visualize, seen=set())
 
 
 def import_submodules(package, recursive=True):
@@ -47,19 +109,10 @@ def import_submodules(package, recursive=True):
 
     :param package: package (name or actual module)
     :type package: str | module
-    :rtype: dict[str, types.ModuleType]
+    :param recursive: Walk all submodules recursively?
+    :type recursive: bool
     """
-    if isinstance(package, str):
-        package = importlib.import_module(package)
-    for loader, name, is_pkg in pkgutil.walk_packages(
-            package.__path__, package.__name__ + '.'):
-        if TEST_DIR in name:
-            continue
-        imported = importlib.import_module(name)
-        for prop in getattr(imported, "TRAITS", []):
-            symbolize(name, prop)
-        if recursive and is_pkg:
-            import_submodules(name)
+    _walk_submodules(package, recursive, _symbolize)
 
 
 # This is where the names defined in submodules are imported
