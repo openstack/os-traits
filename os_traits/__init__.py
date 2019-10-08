@@ -30,13 +30,6 @@ __version__ = pbr.version.VersionInfo(THIS_NAME).version_string()
 CUSTOM_NAMESPACE = 'CUSTOM_'
 
 
-# TODO(efried): This is unused internally; it exists for backward compatibility
-#  in case some consumer was actually calling it, which would be weird.
-#  Consider removing it (and privatizing all the helpers in this module).
-def symbolize(mod_name, name):
-    _symbolize(mod_name, [name])
-
-
 def _symbolize(mod_name, props):
     """Given a reference to a Python module object and an iterable of short
     string names for traits, registers symbols in the module corresponding to
@@ -48,6 +41,21 @@ def _symbolize(mod_name, props):
         value = value_base + '_' + prop.upper()
         setattr(THIS_LIB, value, value)  # os_traits.HW_CPU_X86_SSE
         setattr(leaf_mod, prop, value)  # os_traits.hw.cpu.x86.SSE
+
+
+def _visualize(mod_name, props, seen=None):
+    if mod_name in seen:
+        return
+    seen.add(mod_name)
+    components = mod_name.split('.')
+    tab = '   '
+    # Print the module name
+    indent = tab * (len(components) - 1)
+    print('%s%s:' % (indent, components[-1].upper()))
+    # Print the properties
+    indent = tab * len(components)
+    if props:
+        print('%s%s' % (indent, ', '.join(props)))
 
 
 def _walk_submodules(package, recursive, callback, **kwargs):
@@ -81,42 +89,9 @@ def _walk_submodules(package, recursive, callback, **kwargs):
             _walk_submodules(mod_name, recursive, callback, **kwargs)
 
 
-def _visualize(mod_name, props, seen=None):
-    if mod_name in seen:
-        return
-    seen.add(mod_name)
-    components = mod_name.split('.')
-    tab = '   '
-    # Print the module name
-    indent = tab * (len(components) - 1)
-    print('%s%s:' % (indent, components[-1].upper()))
-    # Print the properties
-    indent = tab * len(components)
-    if props:
-        print('%s%s' % (indent, ', '.join(props)))
-
-
-def print_tree():
-    """Print (to stdout) a visual representation of all the namespaces and the
-    (short) trait names defined therein.
-
-    """
-    _walk_submodules(sys.modules.get(__name__), True, _visualize, seen=set())
-
-
-def import_submodules(package, recursive=True):
-    """Import all submodules of a module, recursively, including subpackages
-
-    :param package: package (name or actual module)
-    :type package: str | module
-    :param recursive: Walk all submodules recursively?
-    :type recursive: bool
-    """
-    _walk_submodules(package, recursive, _symbolize)
-
-
-# This is where the names defined in submodules are imported
-import_submodules(sys.modules.get(__name__))
+# This is where the names defined in submodules are imported by recursively
+# importing all submodules/subpackages and symbolizing their TRAITS
+_walk_submodules(sys.modules.get(__name__), True, _symbolize)
 
 
 def get_traits(prefix=None, suffix=None):
@@ -180,3 +155,11 @@ def normalize_name(name):
     norm_name = re.sub('[^0-9A-Za-z]+', '_', name)
     # Bug #1762789: Do .upper after replacing non alphanumerics.
     return CUSTOM_NAMESPACE + norm_name.upper()
+
+
+def print_tree():
+    """Print (to stdout) a visual representation of all the namespaces and the
+    (short) trait names defined therein.
+
+    """
+    _walk_submodules(sys.modules.get(__name__), True, _visualize, seen=set())
