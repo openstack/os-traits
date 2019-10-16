@@ -15,6 +15,10 @@
 TRAITS = [
     # The virt driver supports associating a tag with a device *at boot time*
     'DEVICE_TAGGING',
+    # A provider with this trait is a compute *node*. (As distinct from
+    # "compute host" or "hypervisor". These may be synonymous in some cases,
+    # but the distinction matters e.g. when using the ironic virt driver.)
+    'NODE',
     # The virt driver supports trusted image certificate validation
     'TRUSTED_CERTS',
 ]
