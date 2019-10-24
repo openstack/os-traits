@@ -6,12 +6,12 @@ Usage
 by simply importing the ``os_traits`` module and referencing one of the
 module's traits constants::
 
-    $ python
-    Python 2.7.11+ (default, Apr 17 2016, 14:00:29)
-    [GCC 5.3.1 20160413] on linux2
+    $ python3
+    Python 3.6.8 (default, Oct  7 2019, 12:59:55)
+    [GCC 8.3.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
     >>> import os_traits as ot
-    >>> print ot.HW_CPU_X86_SSE42
+    >>> print(ot.HW_CPU_X86_SSE42)
     HW_CPU_X86_SSE42
 
 You can get a list of the ``os_traits`` symbols by simply doing a
