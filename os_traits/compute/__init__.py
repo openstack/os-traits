@@ -28,4 +28,6 @@ TRAITS = [
     # not make sense to use in GET /allocation_candidates until/unless there is
     # a way to tie it to the condition of SAME_HOST-ness.
     'SAME_HOST_COLD_MIGRATE',
+    # The virt driver supports rescuing boot from volume instances.
+    'RESCUE_BFV',
 ]
