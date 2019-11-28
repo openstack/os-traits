@@ -13,7 +13,7 @@
 # under the License.
 
 # This is fed from the list at
-# https://docs.openstack.org/image-guide/image-formats.html#disk-formats
+# https://docs.openstack.org/glance/latest/user/formats.html#disk-format
 # and should be kept up to date with same.
 TRAITS = [
     # Amazon kernel, machine, and ramdisk images
@@ -39,4 +39,7 @@ TRAITS = [
 
     # Native format for VMware
     'TYPE_VMDK',
+
+    # Native format for Virtuozzo
+    'TYPE_PLOOP',
 ]
