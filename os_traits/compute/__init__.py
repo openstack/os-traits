@@ -30,4 +30,6 @@ TRAITS = [
     'SAME_HOST_COLD_MIGRATE',
     # The virt driver supports rescuing boot from volume instances.
     'RESCUE_BFV',
+    # The compute manager supports handling accelerator requests.
+    'ACCELERATORS',
 ]
