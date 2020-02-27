@@ -18,7 +18,6 @@ import re
 import sys
 
 import pbr.version
-import six
 
 THIS_NAME = __name__
 THIS_LIB = sys.modules[THIS_NAME]
@@ -105,7 +104,7 @@ def get_traits(prefix=None, suffix=None):
     suffix = suffix or ""
     return [
         v for k, v in sys.modules[__name__].__dict__.items()
-        if isinstance(v, six.string_types) and
+        if isinstance(v, str) and
         not k.startswith('_') and
         v.startswith(prefix) and
         v.endswith(suffix) and
