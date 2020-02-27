@@ -9,3 +9,5 @@ build/
 # pbr-generated stuff
 /AUTHORS
 /ChangeLog
+/RELEASENOTES.rst
+/releasenotes/notes/reno.cache
