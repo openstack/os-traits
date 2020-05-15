@@ -41,6 +41,14 @@ TRAITS = [
     'AVX512BW',  # byte + word
     'AVX512DQ',  # double word + quad word
     'AVX512VNNI',  # vector neural network instructions
+    'AVX512VBMI',  # vector byte manipulation instructions
+    'AVX512IFMA',  # integer fused multiply add
+    'AVX512VBMI2',  # vector byte manipulation instructions 2
+    'AVX512BITALG',  # bit algorithms
+    'AVX512VAES',  # vector aes instructions
+    'AVX512GFNI',  # galois field new instructions
+    'AVX512VPCLMULQDQ',  # carry-less multiplication of quadwords
+    'AVX512VPOPCNTDQ',  # vector population count instruction
     # ref: https://en.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets
     'ABM',
     'BMI',
