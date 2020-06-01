@@ -21,8 +21,10 @@ extensions = [
 ]
 
 # openstackdocstheme options
-repository_name = 'openstack/os-traits'
-bug_project = 'os-traits'
+openstackdocs_repo_name = 'openstack/os-traits'
+openstackdocs_pdf_link = True
+openstackdocs_auto_name = False
+openstackdocs_bug_project = 'os-traits'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -42,7 +44,7 @@ add_function_parentheses = True
 add_module_names = True
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # -- Options for HTML output --------------------------------------------------
 
