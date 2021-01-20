@@ -32,4 +32,7 @@ TRAITS = [
     'RESCUE_BFV',
     # The compute manager supports handling accelerator requests.
     'ACCELERATORS',
+    # The compute manager supports the `socket` value for the
+    # hw_pci_numa_affinity_policy image property/flavor extra spec.
+    'SOCKET_PCI_NUMA_AFFINITY',
 ]
