@@ -16,6 +16,7 @@ TRAITS = [
     # traits corresponding to the allowed values of "hw_video_model"
     # image metadata property
     # https://github.com/openstack/nova/blob/1f74441/nova/objects/fields.py#L501-L509
+    'MODEL_BOCHS',
     'MODEL_CIRRUS',
     'MODEL_GOP',
     'MODEL_NONE',
