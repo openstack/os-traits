@@ -40,3 +40,4 @@ Reference
    :maxdepth: 2
 
    reference/index
+   reference/traits

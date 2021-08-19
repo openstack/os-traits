@@ -11,3 +11,6 @@ build/
 /ChangeLog
 /RELEASENOTES.rst
 /releasenotes/notes/reno.cache
+
+# dynamically generated documentation
+doc/source/reference/traits.rst
