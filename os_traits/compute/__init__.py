@@ -35,4 +35,7 @@ TRAITS = [
     # The compute manager supports the `socket` value for the
     # hw_pci_numa_affinity_policy image property/flavor extra spec.
     'SOCKET_PCI_NUMA_AFFINITY',
+    # The compute manager supports handling remote_managed PCI devices
+    # associated with SmartNIC DPUs.
+    'REMOTE_MANAGED_PORTS'
 ]
