@@ -37,5 +37,8 @@ TRAITS = [
     'SOCKET_PCI_NUMA_AFFINITY',
     # The compute manager supports handling remote_managed PCI devices
     # associated with SmartNIC DPUs.
-    'REMOTE_MANAGED_PORTS'
+    'REMOTE_MANAGED_PORTS',
+    # The compute manager is configured to support file-backed memory.
+    # https://docs.openstack.org/nova/latest/admin/file-backed-memory.html
+    'MEM_BACKING_FILE',
 ]
