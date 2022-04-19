@@ -67,6 +67,6 @@ html_theme = 'openstackdocs'
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ('index', 'doc-os-traits.tex', u'os-traits Documentation',
-     u'OpenStack Foundation', 'manual'),
+    ('index', 'doc-os-traits.tex', 'os-traits Documentation',
+     'OpenStack Foundation', 'manual'),
 ]

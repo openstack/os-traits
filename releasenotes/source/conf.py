@@ -39,8 +39,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'os-traits Release Notes'
-copyright = u'2017, OpenStack Foundation'
+project = 'os-traits Release Notes'
+copyright = '2017, OpenStack Foundation'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
