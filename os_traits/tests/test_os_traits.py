@@ -124,3 +124,9 @@ class TestSymbols(base.TestCase):
         for test_value, expected in values:
             result = ot.normalize_name(test_value)
             self.assertEqual(expected, result)
+
+
+def test_owner_trait(self):
+    # Test for owner prefix traits.
+    traits = ot.get_traits('OWNER')
+    self.assertEqual(["OWNER_CYBORG", "OWNER_NOVA"], traits)

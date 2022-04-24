@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    Add owner trait of ``OWNER_NOVA`` and ``OWNER_CYBORG`` for resource
+    providers in order to solve the shared resource class(such as ``VGPU``)
+    problem by each service recording that they created.
