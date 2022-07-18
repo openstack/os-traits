@@ -25,4 +25,6 @@ TRAITS = [
     'BUS_VIRTIO',
     'BUS_UML',
     'BUS_XEN',
+    # The compute manager supports virtio filesystems.
+    'VIRTIO_FS',
 ]
