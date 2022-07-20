@@ -41,4 +41,7 @@ TRAITS = [
     # The compute manager is configured to support file-backed memory.
     # https://docs.openstack.org/nova/latest/admin/file-backed-memory.html
     'MEM_BACKING_FILE',
+    # Nova use this to indicate that an RP has inventories of PCI device(s)
+    # managed by the nova-compute service
+    'MANAGED_PCI_DEVICE',
 ]
