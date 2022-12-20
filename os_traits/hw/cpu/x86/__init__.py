@@ -91,4 +91,8 @@ TRAITS = [
     # microcode needs to support this feature before it can be used for
     # guest CPUs).
     'STIBP',
+    # ref: https://en.wikipedia.org/wiki/Advanced_Matrix_Extensions
+    'AMXBF16',
+    'AMXINT8',
+    'AMXTILE',
 ]
