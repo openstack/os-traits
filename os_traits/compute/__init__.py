@@ -44,4 +44,8 @@ TRAITS = [
     # Nova use this to indicate that an RP has inventories of PCI device(s)
     # managed by the nova-compute service
     'MANAGED_PCI_DEVICE',
+    # The virt driver supports pass-through or emulated modes for guest
+    # physical address bits.
+    'ADDRESS_SPACE_PASSTHROUGH',
+    'ADDRESS_SPACE_EMULATED',
 ]
