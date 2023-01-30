@@ -48,4 +48,6 @@ TRAITS = [
     # physical address bits.
     'ADDRESS_SPACE_PASSTHROUGH',
     'ADDRESS_SPACE_EMULATED',
+    # The compute manager supports share local fs (via virtiofs)
+    'SHARE_LOCAL_FS',
 ]
