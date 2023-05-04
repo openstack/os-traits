@@ -18,7 +18,7 @@ TRAITS = [
     # The virt driver supports attaching a network interface after boot and
     # specifying a device tag for the interface
     'ATTACH_INTERFACE_WITH_TAG',
-
+    # The virt driver supports Packed virtqueue format
     'VIRTIO_PACKED',
     # traits corresponding to the allowed values of "hw_vif_model"
     # image metadata property
