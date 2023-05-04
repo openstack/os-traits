@@ -19,6 +19,7 @@ TRAITS = [
     # specifying a device tag for the interface
     'ATTACH_INTERFACE_WITH_TAG',
 
+    'VIRTIO_PACKED',
     # traits corresponding to the allowed values of "hw_vif_model"
     # image metadata property
     # https://github.com/openstack/nova/blob/1f74441/nova/network/model.py#L136-L149
