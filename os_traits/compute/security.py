@@ -20,5 +20,7 @@ TRAITS = [
     'TPM_2_0',
     # support for UEFI Secure Boot
     # ref: https://specs.openstack.org/openstack/nova-specs/specs/wallaby/implemented/allow-secure-boot-for-qemu-kvm-guests.html  # noqa
-    'UEFI_SECURE_BOOT'
+    'UEFI_SECURE_BOOT',
+    # support for stateless firmware
+    'STATELESS_FIRMWARE'
 ]
