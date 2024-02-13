@@ -14,7 +14,7 @@
 
 
 TRAITS = [
-    # ref: http://specs.openstack.org/openstack/nova-specs/specs/train/approved/amd-sev-libvirt-support.html # noqa
+    # ref: https://specs.openstack.org/openstack/nova-specs/specs/train/implemented/amd-sev-libvirt-support.html # noqa
     'SEV',
     # ref: https://en.wikipedia.org/wiki/AMD-V
     'SVM',
