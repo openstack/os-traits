@@ -19,6 +19,10 @@ TRAITS = [
     'TPM_1_2',
     # support for TPM 2.0
     'TPM_2_0',
+    # support for TPM with TPM interface Specification(TIS)
+    'TPM_TIS',
+    # support for TPM with Command-Response Buffer(CRB)
+    'TPM_CRB',
     # support for UEFI Secure Boot
     # ref:
     # https://opendev.org/openstack/nova-specs/src/branch/master/specs/wallaby/approved/allow-secure-boot-for-qemu-kvm-guests.rst#fnref8
