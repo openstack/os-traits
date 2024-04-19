@@ -13,14 +13,12 @@
 # under the License.
 
 TRAITS = [
-    # ref: https://specs.openstack.org/openstack/nova-specs/specs/stein/
-    # approved/add-emulated-virtual-tpm.html
+    # ref: https://specs.openstack.org/openstack/nova-specs/specs/victoria/implemented/add-emulated-virtual-tpm.html  # noqa
     # support for TPM 1.2
     'TPM_1_2',
     # support for TPM 2.0
     'TPM_2_0',
     # support for UEFI Secure Boot
-    # ref:
-    # https://opendev.org/openstack/nova-specs/src/branch/master/specs/wallaby/approved/allow-secure-boot-for-qemu-kvm-guests.rst#fnref8
+    # ref: https://specs.openstack.org/openstack/nova-specs/specs/wallaby/implemented/allow-secure-boot-for-qemu-kvm-guests.html  # noqa
     'UEFI_SECURE_BOOT'
 ]
