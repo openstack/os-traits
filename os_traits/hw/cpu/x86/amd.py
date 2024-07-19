@@ -14,8 +14,9 @@
 
 
 TRAITS = [
-    # ref: https://specs.openstack.org/openstack/nova-specs/specs/train/implemented/amd-sev-libvirt-support.html # noqa
+    # ref: https://www.amd.com/en/developer/sev.html
     'SEV',
+    'SEV_ES',
     # ref: https://en.wikipedia.org/wiki/AMD-V
     'SVM',
     # ref: https://git.qemu.org/?p=qemu.git;a=blob;f=docs/qemu-cpu-models.texi
