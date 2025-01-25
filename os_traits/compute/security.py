@@ -22,6 +22,12 @@ TRAITS = [
     'TPM_TIS',
     # support for TPM with Command-Response Buffer(CRB)
     'TPM_CRB',
+    # support for the `user` vTPM secret policy
+    'TPM_SECRET_SECURITY_USER',
+    # support for the `host` vTPM secret policy
+    'TPM_SECRET_SECURITY_HOST',
+    # support for the `deployment` vTPM secret policy
+    'TPM_SECRET_SECURITY_DEPLOYMENT',
     # support for UEFI Secure Boot
     # ref: https://specs.openstack.org/openstack/nova-specs/specs/wallaby/implemented/allow-secure-boot-for-qemu-kvm-guests.html  # noqa
     'UEFI_SECURE_BOOT',
