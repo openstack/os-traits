@@ -17,4 +17,9 @@ TRAITS = [
     # PCI device can be live-migrated from one compute node to another
     # with the same device.
     'LIVE_MIGRATABLE',
+    # PCI device lifecycle is being managed as "one time use". Compute manager
+    # will set reserved=total during assignment and leave it as such during
+    # deallocation, requiring an external agent to un-reserve it before it
+    # can be used again.
+    'ONE_TIME_USE',
 ]
