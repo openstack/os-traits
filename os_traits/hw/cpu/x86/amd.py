@@ -17,6 +17,7 @@ TRAITS = [
     # ref: https://www.amd.com/en/developer/sev.html
     'SEV',
     'SEV_ES',
+    'SEV_SNP',
     # ref: https://en.wikipedia.org/wiki/AMD-V
     'SVM',
     # ref: https://git.qemu.org/?p=qemu.git;a=blob;f=docs/qemu-cpu-models.texi
