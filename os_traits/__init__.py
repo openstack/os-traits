@@ -16,6 +16,7 @@ import importlib
 import pkgutil
 import re
 import sys
+import warnings
 
 import pbr.version
 
@@ -23,7 +24,19 @@ THIS_NAME = __name__
 THIS_LIB = sys.modules[THIS_NAME]
 TEST_DIR = "%s.tests" % THIS_NAME
 
-__version__ = pbr.version.VersionInfo(THIS_NAME).version_string()
+
+def __getattr__(name: str) -> str:
+    if name == '__version__':
+        warnings.warn(
+            "Accessing os_traits.__version__ is deprecated and will be "
+            "removed in a future release. Use importlib.metadata instead: "
+            "importlib.metadata.version('os-traits')",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+        return pbr.version.VersionInfo(THIS_NAME).version_string()
+    raise AttributeError(f"module 'os_traits' has no attribute {name!r}")
+
 
 # Any user-specified feature/trait is prefixed with the custom namespace
 CUSTOM_NAMESPACE = 'CUSTOM_'
