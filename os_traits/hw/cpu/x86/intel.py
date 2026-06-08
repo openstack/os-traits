@@ -24,4 +24,6 @@ TRAITS = [
     'SSBD',
     # ref: https://en.wikipedia.org/wiki/VT-x
     'VMX',
+    # ref: https://en.wikipedia.org/wiki/Trust_Domain_Extensions
+    'TDX',
 ]
