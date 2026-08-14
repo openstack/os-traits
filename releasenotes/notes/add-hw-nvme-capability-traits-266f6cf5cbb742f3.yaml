@@ -1,0 +1,10 @@
+---
+features:
+  - |
+    Add ``HW_NVME_CES`` (Crypto Erase Sanitize), ``HW_NVME_BES`` (Block
+    Erase Sanitize), and ``HW_NVME_WZS`` (Write Zeroes Supported) traits
+    under a new ``HW_NVME`` namespace. These traits allow Cyborg's generic
+    NVMe driver to report NVMe device capabilities to Placement based on
+    the controller's ``sanicap`` and ``oncs`` register fields, enabling
+    operators to match cleanup policies to hardware capabilities during
+    device scheduling.

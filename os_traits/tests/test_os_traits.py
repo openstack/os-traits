@@ -19,6 +19,7 @@ from os_traits.hw.cpu import x86
 from os_traits.hw.gpu import api
 from os_traits.hw.gpu import resolution
 from os_traits.hw.nic import offload
+from os_traits.hw import nvme
 from os_traits.tests import base
 
 
@@ -37,6 +38,7 @@ class TestSymbols(base.TestCase):
         self.assertEqual(resolution.W1920H1080,
                          ot.HW_GPU_RESOLUTION_W1920H1080)
         self.assertEqual(offload.TSO, ot.HW_NIC_OFFLOAD_TSO)
+        self.assertEqual(nvme.CES, ot.HW_NVME_CES)
 
     def test_get_traits_filter_by_prefix(self):
         traits = ot.get_traits('HW_CPU')
@@ -124,6 +126,13 @@ class TestSymbols(base.TestCase):
         for test_value, expected in values:
             result = ot.normalize_name(test_value)
             self.assertEqual(expected, result)
+
+    def test_hw_nvme_traits(self):
+        traits = ot.get_traits('HW_NVME')
+        self.assertIn('HW_NVME_CES', traits)
+        self.assertIn('HW_NVME_BES', traits)
+        self.assertIn('HW_NVME_WZS', traits)
+        self.assertEqual(3, len(traits))
 
 
 def test_owner_trait(self):
